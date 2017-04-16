@@ -74,20 +74,6 @@ class Queue
 		end
 		puts
 	end
-
-	def sortStack
-		s2 = Stack.new
-		while !isEmpty
-			el = pop
-			while !s2.isEmpty && s2.peek > el
-				push(s2.pop)
-			end
-			s2.push(el)
-		end
-		while !s2.isEmpty
-			push(s2.pop)
-		end
-	end
 end
 
 class Shelter
