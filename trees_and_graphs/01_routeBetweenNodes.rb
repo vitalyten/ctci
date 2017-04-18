@@ -41,7 +41,6 @@ class Graph
 		n2 = @nodes.find {|n| n.name == name2}
 		raise "node not found" if n1 == nil || n2 == nil
 		n1.addAdjacent(n2)
-		n2.addAdjacent(n1)
 	end
 
 	def isConnected(name1, name2)
@@ -67,16 +66,15 @@ graph.addNode(2)
 graph.addNode(3)
 graph.addNode(4)
 graph.addNode(5)
-graph.addNode(6)
 graph.addEdge(0, 1)
 graph.addEdge(0, 5)
 graph.addEdge(0, 4)
-graph.addEdge(1, 2)
+graph.addEdge(2, 1)
 graph.addEdge(1, 3)
 graph.addEdge(1, 4)
-graph.addEdge(2, 3)
-graph.addEdge(4, 3)
-if graph.isConnected(5, 2)
+graph.addEdge(3, 2)
+graph.addEdge(3, 4)
+if graph.isConnected(0, 2)
 	puts "connected"
 else
 	puts "not connected"
