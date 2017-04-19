@@ -29,13 +29,22 @@ class Tree
 		return n
 	end
 
+	def checkHeight(node)
+		return -1 if node == nil
+		lh = height(node.right)
+		rh = height(node.left)
+		return -42 if (lh - rh).abs > 1
+		return 1 + [lh, rh].max
+	end
+
+
 	def height(node)
 		return -1 if node == nil
 		return 1 + [height(node.right), height(node.left)].max
 	end
 
 	def isBalanced?
-		return isBalanced(@head)
+		return checkHeight(@head) != -42
 	end
 
 	def isBalanced(node)
