@@ -30,18 +30,17 @@ class Tree
 	end
 
 	def isBST?
-		return isBST(@head)
+		arr = Array.new
+		isBST(@head, arr)
+		print arr, "\n"
+		return arr == arr.sort
 	end
 
-	def isBST(node)
-		return true if node == nil
-		if node.left
-			return false if node.left.val > node.val
-		end
-		if node.right
-			return false if node.right.val < node.val
-		end
-		return isBST(node.left) && isBST(node.right)
+	def isBST(node, arr)
+		return if node == nil
+		isBST(node.left, arr)
+		arr << node.val
+		isBST(node.right, arr)
 	end
 
 	def height(node)
