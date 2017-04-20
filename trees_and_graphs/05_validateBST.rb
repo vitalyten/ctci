@@ -30,10 +30,21 @@ class Tree
 	end
 
 	def isBST?
-		arr = Array.new
-		isBST(@head, arr)
-		print arr, "\n"
-		return arr == arr.sort
+		#arr = Array.new
+		#isBST(@head, arr)
+		#print arr, "\n"
+		#return arr == arr.sort
+		return isBSTv2(@head)
+	end
+	
+	prev = nil
+	def isBSTv2(node)
+		return true if node == nil
+		return false if !isBSTv2(node.left)
+		return false if @prev != nil && node.val < @prev
+		@prev = node.val
+		return false if !isBSTv2(node.right)
+		return true
 	end
 
 	def isBST(node, arr)
@@ -41,21 +52,6 @@ class Tree
 		isBST(node.left, arr)
 		arr << node.val
 		isBST(node.right, arr)
-	end
-
-	def height(node)
-		return -1 if node == nil
-		return 1 + [height(node.right), height(node.left)].max
-	end
-
-	def isBalanced?
-		return isBalanced(@head)
-	end
-
-	def isBalanced(node)
-		return true if node == nil
-		return false if (height(node.left) - height(node.right)).abs > 1
-		return isBalanced(node.left) && isBalanced(node.right)
 	end
 
 	def printTree
@@ -71,7 +67,7 @@ class Tree
 end
 
 tree = Tree.new
-arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,44,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 arr1 = [1,2,3]
 tree.arrToBST(arr)
 #node = tree.head
