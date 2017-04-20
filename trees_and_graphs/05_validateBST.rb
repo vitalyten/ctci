@@ -34,9 +34,18 @@ class Tree
 		#isBST(@head, arr)
 		#print arr, "\n"
 		#return arr == arr.sort
-		return isBSTv2(@head)
+		#return isBSTv2(@head)
+		return isBSTv3(@head, nil, nil)
 	end
 	
+	def isBSTv3(node, min, max)
+		return true if node == nil
+		return false if min != nil && node.val <= min
+		return false if max != nil && node.val > max
+		return false if (!isBSTv3(node.left, min, node.val) || !isBSTv3(node.right, node.val, max))
+		return true
+	end
+
 	prev = nil
 	def isBSTv2(node)
 		return true if node == nil
@@ -67,7 +76,7 @@ class Tree
 end
 
 tree = Tree.new
-arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,44,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 arr1 = [1,2,3]
 tree.arrToBST(arr)
 #node = tree.head
