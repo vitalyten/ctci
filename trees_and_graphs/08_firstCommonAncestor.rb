@@ -36,6 +36,30 @@ class Tree
 		return one
 	end
 
+	def commonAncestorV2(n1, n2)
+		return nil if !covers(@root, n1) || !covers(@root, n2)
+		return n1 if covers(n1, n2)
+		return n2 if covers(n2, n1)
+		sib = sibling(n1)
+		parent = n1.parent
+		while !covers(sib, n2)
+			sib = sibling(parent)
+			parent = parent.parent
+		end
+		return parent
+	end
+
+	def sibling(node)
+		return nil if node == nil || node.parent == nil
+		return node.parent.left == node ? node.parent.right : node.parent.left
+	end
+
+	def covers(n1, n2)
+		return false if n1 == nil || n2 == nil
+		return true if n1 == n2
+		return covers(n1.left, n2) || covers(n1.right, n2)
+	end
+
 	def depth(node)
 		return -1 if node == nil
 		return 1 + [depth(node.left), depth(node.right)].max
@@ -70,5 +94,7 @@ tree = Tree.new
 arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 arr1 = [1,2,3]
 tree.arrToBST(arr)
+
 tree.printTree
-puts tree.commonAncestor(tree.root.left.left.left, tree.root.right.right).val
+puts tree.commonAncestor(tree.root.left.left.left, tree.root.left.right).val
+puts tree.commonAncestorV2(tree.root.left.left.left, tree.root.left.right).val
