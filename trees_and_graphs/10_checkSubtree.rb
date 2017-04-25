@@ -16,10 +16,6 @@ class Tree
 		@root = nil
 	end
 
-	def allSequences
-		return allRec(@root)
-	end
-
 	def containsTreeV2(node)
 		return true if node == nil
 		return findNode(@root, node)
@@ -93,8 +89,7 @@ tree1 = Tree.new
 tree1.arrToBST(arr1)
 tree.printTree
 tree1.printTree
-#if tree.containsTreeV2(tree.root.left.left.right)
-if tree.containsTreeV2(tree1.root)
+if tree.containsTree(tree.root.left.left)
 	puts "contains"
 else
 	puts "does not contain"
