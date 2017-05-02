@@ -14,11 +14,11 @@ class Node
 	end
 end
 
-class Stack 
+class Stack
 	attr_accessor :head
 
 	def initialize
-		@head = nil 
+		@head = nil
 	end
 
 	def min

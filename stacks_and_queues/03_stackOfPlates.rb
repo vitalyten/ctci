@@ -9,8 +9,8 @@ class Node
 	end
 end
 
-class Stack 
-	attr_accessor :head, :next, :size 
+class Stack
+	attr_accessor :head, :next, :size
 
 	def initialize
 		@head = nil
@@ -53,7 +53,7 @@ end
 
 class SetOfStacks
 	attr_accessor :head, :set, :cap, :curr
-	
+
 	def initialize(cap)
 		@cap = cap
 		@curr = 0

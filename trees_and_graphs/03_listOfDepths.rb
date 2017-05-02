@@ -12,7 +12,7 @@ class List
 	attr_accessor :head
 
 	def initialize
-		@head = nil 
+		@head = nil
 	end
 
 	def add(val)
@@ -24,7 +24,7 @@ class List
 			while curr.next != nil
 				curr = curr.next
 			end
-			curr.next = node 
+			curr.next = node
 		end
 	end
 
@@ -53,7 +53,7 @@ class Node
 	end
 end
 
-class Tree 
+class Tree
 	attr_accessor :head
 
 	def initialize

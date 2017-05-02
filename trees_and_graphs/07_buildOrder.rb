@@ -15,7 +15,7 @@ class Node
 	end
 end
 
-class Graph 
+class Graph
 	attr_accessor :nodes
 
 	def initialize

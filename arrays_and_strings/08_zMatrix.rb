@@ -10,9 +10,9 @@ def zMatrix(mt)
 			tab << [i,j] if mt[i][j] == 0
 		end
 	end
-	tab.each do |a| 
+	tab.each do |a|
 		for i in 0..h - 1
-			mt[i][a[1]] = 0 
+			mt[i][a[1]] = 0
 		end
 		for i in 0..w - 1
 			mt[a[0]][i] = 0

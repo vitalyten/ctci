@@ -9,7 +9,7 @@ class Node
 	end
 end
 
-class Tree 
+class Tree
 	attr_accessor :head
 
 	def initialize
@@ -37,7 +37,7 @@ class Tree
 		#return isBSTv2(@head)
 		return isBSTv3(@head, nil, nil)
 	end
-	
+
 	def isBSTv3(node, min, max)
 		return true if node == nil
 		return false if min != nil && node.val <= min

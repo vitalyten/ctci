@@ -9,7 +9,7 @@ class Node
 	end
 end
 
-class Tree 
+class Tree
 	attr_accessor :head
 
 	def initialize

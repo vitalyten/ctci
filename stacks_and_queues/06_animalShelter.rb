@@ -33,7 +33,7 @@ class Node
 	end
 end
 
-class Queue 
+class Queue
 	attr_accessor :first, :last
 
 	def initialize

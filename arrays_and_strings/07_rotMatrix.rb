@@ -11,11 +11,11 @@ def rotMatrix(mt)
 			top = mt[first][i]
 
 			mt[first][i] = mt[last - offset][first]
-			
+
 			mt[last - offset][first] = mt[last][last - offset]
-			
+
 			mt[last][last - offset] = mt[i][last]
-			
+
 			mt[i][last] = top
 		end
 	end

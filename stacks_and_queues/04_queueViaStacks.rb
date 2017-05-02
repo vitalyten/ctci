@@ -9,8 +9,8 @@ class Node
 	end
 end
 
-class Stack 
-	attr_accessor :head, :next, :size 
+class Stack
+	attr_accessor :head, :next, :size
 
 	def initialize
 		@head = nil
@@ -57,9 +57,9 @@ class MyQueue
 		@first = Stack.new
 		@last = Stack.new
 	end
-	
+
 	def add(val)
-		@first.push(val)	
+		@first.push(val)
 	end
 
 	def moveToLast

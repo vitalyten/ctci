@@ -1,5 +1,4 @@
 #!/usr/bin/ruby
-
 class Node
 	attr_accessor :val, :right, :left
 
@@ -11,27 +10,27 @@ class Node
 end
 
 class Tree
-	attr_accessor :head
+	attr_accessor :root
 
 	def initialize
-		@head = nil
+		@root = nil
 	end
 
 	def arrToBST(arr)
-		@head = findMiddle(arr, 0, arr.length - 1)
+		@root = findMiddle(nil, arr, 0, arr.length - 1)
 	end
 
-	def findMiddle(arr, l, r)
+	def findMiddle(parent, arr, l, r)
 		return nil if l > r
 		m = (l + r) / 2
 		n = Node.new(arr[m])
-		n.left = findMiddle(arr, l, m - 1)
-		n.right = findMiddle(arr, m + 1, r)
+		n.left = findMiddle(n, arr, l, m - 1)
+		n.right = findMiddle(n, arr, m + 1, r)
 		return n
 	end
 
 	def printTree
-		printFoo("", @head, true)
+		printFoo("", @root, true)
 	end
 
 	def printFoo(prefix, node, last)
@@ -42,7 +41,14 @@ class Tree
 	end
 end
 
-tree = Tree.new
-arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
-tree.arrToBST(arr)
-tree.printTree
+t1 = Tree.new
+t1.root = Node.new(10)
+t1.root.right = Node.new(-3)
+t1.root.right.right = Node.new(11)
+t1.root.left = Node.new(5)
+t1.root.left.right = Node.new(2)
+t1.root.left.right.right = Node.new(1)
+t1.root.left.left = Node.new(3)
+t1.root.left.left.left = Node.new(3)
+t1.root.left.left.right = Node.new(-2)
+t1.printTree

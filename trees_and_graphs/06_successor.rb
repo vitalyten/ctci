@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 class Node
 	attr_accessor :val, :right, :left, :parent
-	
+
 	def initialize(val, parent)
 		@val = val
 		@parent = parent
@@ -10,7 +10,7 @@ class Node
 	end
 end
 
-class Tree 
+class Tree
 	attr_accessor :head
 
 	def initialize

@@ -20,7 +20,7 @@ class Node
 	end
 end
 
-class Graph 
+class Graph
 	attr_accessor :nodes
 
 	def initialize
@@ -51,7 +51,7 @@ class Graph
 	def orderDFS(node, stack)
 		return nil if node.state == State::PARTIAL
 		if node.state == State::BLANK
-			node.state = State::PARTIAL 
+			node.state = State::PARTIAL
 			node.adjacent.each do |n|
 				return nil if !orderDFS(n, stack)
 			end
