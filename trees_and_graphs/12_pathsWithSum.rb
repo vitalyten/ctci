@@ -39,6 +39,40 @@ class Tree
 		printFoo(prefix + (last ? "    " : "│   "), node.right, tail) if node.right
 		printFoo(prefix + (last ? "    " : "│   "), node.left, true) if node.left
 	end
+
+	def pathsWithSumV2(sum)
+		return pathsV2(@root, sum, 0, Hash.new(0))
+	end
+
+	def pathsV2(node, target, rsum, ht)
+		return 0 if node == nil
+		total = 0
+		rsum += node.val
+		ht[rsum] += 1
+		total += ht[rsum - target]
+		total += pathsV2(node.left, target, rsum, ht)
+		total += pathsV2(node.right, target, rsum, ht)
+		ht[rsum] -= 1
+		ht.delete(rsum) if ht[rsum] == 0
+		return total
+	end
+
+	def pathsWithSum(sum)
+		return paths(@root, sum)
+	end
+
+	def paths(node, sum)
+		return 0 if node == nil
+		return countPaths(node, 0, sum) + paths(node.left, sum) + paths(node.right, sum)
+	end
+
+	def countPaths(node, sum, target)
+		return 0 if node == nil
+		total = 0
+		sum += node.val
+		total += 1 if sum == target
+		return total + countPaths(node.left, sum, target) + countPaths(node.right, sum, target)
+	end
 end
 
 t1 = Tree.new
@@ -52,3 +86,5 @@ t1.root.left.left = Node.new(3)
 t1.root.left.left.left = Node.new(3)
 t1.root.left.left.right = Node.new(-2)
 t1.printTree
+puts t1.pathsWithSum(8)
+puts t1.pathsWithSumV2(8)
