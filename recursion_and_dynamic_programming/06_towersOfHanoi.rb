@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 
 class Tower
-	attr_accessor :index, :disks
+	attr_accessor :disks
 
 	def initialize
 		@disks = Array.new
