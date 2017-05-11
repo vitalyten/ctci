@@ -31,8 +31,9 @@ class Tree
 
 	def checkHeight(node)
 		return -1 if node == nil
-		lh = height(node.right)
-		rh = height(node.left)
+		rh = checkHeight(node.right)
+		lh = checkHeight(node.left)
+		return -42 if lh == -42 or rh == -42
 		return -42 if (lh - rh).abs > 1
 		return 1 + [lh, rh].max
 	end
@@ -45,6 +46,7 @@ class Tree
 
 	def isBalanced?
 		return checkHeight(@head) != -42
+		# return isBalanced(@head)
 	end
 
 	def isBalanced(node)
@@ -66,16 +68,20 @@ class Tree
 end
 
 tree = Tree.new
-arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
+# arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 arr1 = [1,2,3]
 tree.arrToBST(arr1)
 node = tree.head
+node.right.left = Node.new(7)
+node.right.left.left = Node.new(7)
+
 while node.left
 	node = node.left
 end
 node.left = Node.new(7)
+node.right = Node.new(8)
 node = node.left
-node.left = Node.new(9)
+# node.left = Node.new(9)
 tree.printTree
 if tree.isBalanced?
 	puts "balanced"
