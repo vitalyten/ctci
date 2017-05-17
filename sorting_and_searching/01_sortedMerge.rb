@@ -3,12 +3,12 @@
 def merge(a, b, lastA, lastB)
 	i = lastA + lastB + 1
 	while lastB >= 0
-		if a[lastA] < b[lastB]
-			a[i] = b[lastB]
-			lastB -= 1
-		else
+		if (lastA >= 0 and a[lastA] > b[lastB])
 			a[i] = a[lastA]
 			lastA -= 1
+		else
+			a[i] = b[lastB]
+			lastB -= 1
 		end
 		i -= 1
 	end
