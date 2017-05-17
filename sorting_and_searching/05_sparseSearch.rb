@@ -1,7 +1,8 @@
 #!/usr/bin/ruby
 
 def search(arr, left, right, str)
-	return -1 if (str == "" or str == nil)
+	return -1 if (str == "" or str == nil or arr == nil)
+	return -1 if (left > right)
 	mid = (left + right) / 2
 	if arr[mid] == ""
 		midl = mid - 1
@@ -26,4 +27,4 @@ def search(arr, left, right, str)
 end
 
 arr = ["apple", "", "", "", "ball", "", "", "cat", "", "", "dog", "", ""]
-p search(arr, 0, arr.length - 1, arr[4])
+p search(arr, 0, arr.length - 1, "dog")
